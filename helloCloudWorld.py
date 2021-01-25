@@ -4,18 +4,21 @@ import os
 def lambda_handler(event, context):
     
     
-    world_type = os.environ["WORLD_TYPE"] 
+    weather_type = int(os.environ["WEATHER_TYPE"])
     
-    if world_type == 0:
-        world_type_str = 'Cloudy'
-    elif world_type == 1:
-        world_type_str = 'Snowy'
-    elif world_type == 2:
-        world_type_str = 'Sunny'
+    
+    if weather_type == 0:
+        weather_type_str = "Cloudy"
+    elif weather_type == 1:
+        weather_type_str = "Snowy"
+    elif weather_type == 2:
+        weather_type_str = "Sunny"
+    elif weather_type == 3:
+        weather_type_str = "Windy"
     else:
-        world_type_str = 'Windy'
+        weather_type_str = "Unknown"
     
-    body_mssg = 'Hello '+ world_type_str +' Cloud World from Lambda!'
+    body_mssg = "Hello "+ weather_type_str +" Cloud World from Lambda!"
     print (body_mssg)
     
     return {
